@@ -8,40 +8,39 @@ module DoFacebook
     
     # Ensures, using configuration options, that the request was signed by Facebook
     def validate_signed_request
-      logger.debug "VALIDATING SIGNED REQUEST"
-      logger.debug "CONFIG IS: #{facebook_config.inspect}"
-      if app_secret = facebook_config["secret_key"]
-        logger.debug "APP CONFIGRUATION FOUND AND LOADED. SECRET: #{app_secret}"
-        if request_parameter = request.params[:signed_request]
-          logger.debug "PARSING SIGNED REQUEST"
+      if request_parameter = request.params["signed_request"]
+        if app_secret = facebook_config["secret_key"]
           encoded_signature, encoded_data = request_parameter.split(".")
           decoded_signature = base64_url_decode(encoded_signature)
           digested = OpenSSL::HMAC.digest("sha256", app_secret, encoded_data)
           valid = (digested == decoded_signature)
-          logger.debug "SIGNED REQUEST VALID? #{valid}"
-          return valid
-        else
-          logger.debug "NO SIGNED REQUEST PARAMETER TO PARSE"
+          if valid
+            logger.info "DoFacebook: Signed Request Valid."
+          else
+            logger.info "DoFacebook: Invalid Signed Request. Ensure request from Facebook."
+            raise "DoFacebook: Invalid Signed Request. Ensure request from Facebook."
+          end
         end
-      else
-        logger.debug "NO CONFIGURATION FOR FACEBOOK APP FOUND"
       end
     end
+
     
     # If present, parses data from the signed request and inserts it into the fbparams
     # object for use during requests
     def parse_signed_request
-      logger.debug "PARSING SIGNED REQUEST"
-      request_parameter = request.params[:signed_request]
-      encoded_signature, encoded_data = request_parameter.split(".")
-      decoded_signature = base64_url_decode(encoded_signature)
-      decoded_data = base64_url_decode(encoded_data)
-      @fbparams = JSON.parse(decoded_data).merge({
-        "signature"=>encoded_signature,
-        "data"=>encoded_data 
-      })
+      if request_parameter = request.params["signed_request"]
+        encoded_signature, encoded_data = request_parameter.split(".")
+        decoded_signature = base64_url_decode(encoded_signature)
+        decoded_data = base64_url_decode(encoded_data)
+        @fbparams = JSON.parse(decoded_data).merge({
+          "signature"=>encoded_signature,
+          "data"=>encoded_data 
+        })
+        logger.info "  Facebook Parameters: #{fbparams.inspect}"
+      end
     end
-
+      
+      
     
     private
     
