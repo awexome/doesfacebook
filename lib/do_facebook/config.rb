@@ -4,27 +4,24 @@
 module DoFacebook
   module Config
     
+    protected
+    
     # Access the Facebook-specific configuration for the given environment:
-    def self.config
-      @@config ||= all_config[Rails.env]
+    def facebook_config
+      logger.debug "ACCESSING CONFIG"
+      @@facebook_config ||= all_facebook_config[Rails.env]
     end
     
     # Load configuration from YAML file for all environments:
-    def self.all_config
-      @@all_config ||= YAML.load(File.open(File.join(Rails.root, "config", "dofacebook.yml")))
-    end
-    
-    # Given a specific Facebook applicat ID, retrieve the approprite config:
-    def self.config_for_app_id(app_id)
-      config[app_id]
-    end
-      
-    
-    # Given a callback URL, retrieve the appropriate config:
-    def self.config_for_callback(url)
-      app_config = config.find{|k,v| v.values.include?(url) }
-      app_id = app_config && app_config[0]
-      config_for_app_id(app_id)
+    def all_facebook_config
+      logger.debug "ACCESSING ALL_CONFIG. LOAD FROM YAML IF FIRST TIME"
+      config_file = File.join(Rails.root, "config", "dofacebook.yml")
+      if File.exist?(config_file)
+        logger.debug "CONFIGURATION FILE dofacebook.yml READY TO LOAD"
+        return @@all_facebook_config ||= YAML.load(File.open( config_file ))
+      else
+        logger.debug "CONFIGURATION FILE dofacebook.yml DOES NOT EXIST"
+      end
     end
         
   end
