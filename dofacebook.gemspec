@@ -5,31 +5,26 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dofacebook}
-  s.version = ""
+  s.version = "0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["fractallian"]
-  s.date = %q{2011-02-03}
+  s.authors = ["mccolin"]
+  s.date = %q{2011-02-04}
   s.description = %q{Paper-thin Facebook validation and signed request parsing Rails plugin}
   s.email = %q{info@awexomelabs.com}
   s.extra_rdoc_files = [
     "README"
   ]
   s.files = [
-    "Gemfile",
-    "README",
-    "Rakefile",
-    "VERSION",
-    "lib/do_facebook.rb",
-    "lib/do_facebook/config.rb",
-    "lib/do_facebook/filters.rb",
-    "lib/do_facebook/session.rb"
+    "lib/dofacebook.rb",
+    "lib/dofacebook/config.rb",
+    "lib/dofacebook/filters.rb",
+    "lib/dofacebook/session.rb"
   ]
-  s.homepage = %q{https://awexome.codebasehq.com/extra/dofacebook}
-  s.licenses = ["MIT"]
+  s.homepage = %q{http://awexomelabs.com/}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Do Facebook}
+  s.summary = %q{Paper-thin Facebook validation and signed request parsing Rails plugin}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
