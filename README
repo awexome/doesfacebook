@@ -6,5 +6,8 @@ appearing on the Facebook canvas or within Page tabs.
 
 To include DoFacebook in your Rails 3 projects, add this dependency to your Gemfile:
 
-gem "dofacebook", "0.1", :git=>"git@codebasehq.com:awexome/extra/dofacebook.git", :tag=>"0.1"
+gem "dofacebook", ">=0.2", :git=>"git://github.com/awexome/dofacebook.git"
+
+
+Copyright 2011 Awexome Labs, LLC
 
