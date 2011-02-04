@@ -6,8 +6,10 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "dofacebook"
     gem.summary = "Paper-thin Facebook validation and signed request parsing Rails plugin"
+    gem.description = "Paper-thin Facebook validation and signed request parsing Rails plugin"
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
     gem.email = "info@awexomelabs.com"
+    gem.homepage = "http://awexomelabs.com/"
     gem.authors = ["mccolin"]
     gem.version = File.exist?('VERSION') ? File.read('VERSION') : "NOVERSION"
     # other fields that would normally go in your gemspec
