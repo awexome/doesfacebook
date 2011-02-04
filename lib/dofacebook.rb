@@ -1,12 +1,12 @@
 # AWEXOME LABS
 # DoFacebook
 
-require 'do_facebook'
+require 'dofacebook'
 require 'rails'
 require 'action_controller'
 
-require 'do_facebook/config'
-require 'do_facebook/filters'
+require 'dofacebook/config'
+require 'dofacebook/filters'
 
 module DoFacebook
 
