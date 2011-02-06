@@ -1,7 +1,7 @@
 # AWEXOME LABS
-# DoFacebook Config
+# DoesFacebook Config
 
-module DoFacebook
+module DoesFacebook
   module Config
     
     protected
@@ -20,5 +20,5 @@ module DoFacebook
     end
         
   end
-end
+end # DoesFacebook
 

@@ -1,7 +1,7 @@
 # AWEXOME LABS
 # Filters
 
-module DoFacebook
+module DoesFacebook
   module Filters
     
     protected
@@ -51,4 +51,4 @@ module DoFacebook
     end
     
   end
-end
+end # DoesFacebook

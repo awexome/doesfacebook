@@ -1,18 +1,19 @@
 # AWEXOME LABS
-# DoFacebook
+# DoesFacebook
 
-require 'dofacebook'
+require 'doesfacebook'
 require 'rails'
 require 'action_controller'
 
-require 'dofacebook/config'
-require 'dofacebook/filters'
+require 'doesfacebook/config'
+require 'doesfacebook/filters'
+require 'doesfacebook/session'
 
-module DoFacebook
+module DoesFacebook
 
   # Create a Rails Engine
   class Engine < Rails::Engine
-    engine_name :dofacebook
+    engine_name :doesfacebook
   end
   
   # Return the current working version of DoFacebook from VERSION file:
@@ -20,7 +21,7 @@ module DoFacebook
     @@version ||= File.open(File.join(File.dirname(__FILE__), "..", "VERSION"), "r").read
   end
   
-end
+end # DoesFacebook
 
 
 module ActionController
@@ -41,5 +42,5 @@ module ActionController
     end
     
   end
-end
+end # ActionController
 
