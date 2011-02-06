@@ -4,7 +4,7 @@
 begin
   require "jeweler"
   Jeweler::Tasks.new do |gem|
-    gem.name = "dofacebook"
+    gem.name = "doesfacebook"
     gem.summary = "Paper-thin Facebook validation and signed request parsing Rails plugin"
     gem.description = "Paper-thin Facebook validation and signed request parsing Rails plugin"
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
