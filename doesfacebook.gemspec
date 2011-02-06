@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.email = %q{info@awexomelabs.com}
   s.extra_rdoc_files = [
     "LICENSE",
-    "README"
+    "README.rdoc"
   ]
   s.files = [
-    "lib/dofacebook.rb",
-    "lib/dofacebook/config.rb",
-    "lib/dofacebook/filters.rb",
-    "lib/dofacebook/session.rb"
+    "lib/doesfacebook.rb",
+    "lib/doesfacebook/config.rb",
+    "lib/doesfacebook/filters.rb",
+    "lib/doesfacebook/session.rb"
   ]
   s.homepage = %q{http://awexomelabs.com/}
   s.require_paths = ["lib"]
