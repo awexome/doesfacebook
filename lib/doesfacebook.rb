@@ -13,7 +13,7 @@ module DoesFacebook
 
   # Create a Rails Engine
   class Engine < Rails::Engine
-    engine_name :doesfacebook
+    # engine_name :doesfacebook
   end
   
   # Return the current working version of DoFacebook from VERSION file:
