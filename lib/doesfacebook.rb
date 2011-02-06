@@ -29,10 +29,10 @@ module ActionController
     
     # Call this method within your controller to parse configuration and enabled
     # session validation and parsing
-    def self.do_facebook
+    def self.does_facebook
       self.instance_eval do 
-        include DoFacebook::Config
-        include DoFacebook::Filters
+        include DoesFacebook::Config
+        include DoesFacebook::Filters
         prepend_before_filter :parse_signed_request
         prepend_before_filter :validate_signed_request
       
