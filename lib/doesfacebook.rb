@@ -7,6 +7,7 @@ require 'action_controller'
 
 require 'doesfacebook/config'
 require 'doesfacebook/filters'
+require 'doesfacebook/helpers'
 require 'doesfacebook/session'
 
 module DoesFacebook
@@ -33,11 +34,17 @@ module ActionController
       self.instance_eval do 
         include DoesFacebook::Config
         include DoesFacebook::Filters
+        include DoesFacebook::Helpers
         prepend_before_filter :parse_signed_request
         prepend_before_filter :validate_signed_request
+        helper :doesfacebook
       
         protected
         attr_reader :fbparams
+        
+        def link_to_canvas(text, link_opts, html_opts)
+          
+        end
       end
     end
     

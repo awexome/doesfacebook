@@ -1,5 +1,7 @@
 # AWEXOME LABS
-# Filters
+# DoesFacebook
+#
+# Filters - before and after filters for controller that process Facebook behavior
 
 module DoesFacebook
   module Filters
