@@ -34,10 +34,10 @@ module DoesFacebook
         encoded_signature, encoded_data = request_parameter.split(".")
         decoded_signature = base64_url_decode(encoded_signature)
         decoded_data = base64_url_decode(encoded_data)
-        @fbparams = JSON.parse(decoded_data).merge({
+        @fbparams = HashWithIndifferentAccess.new(JSON.parse(decoded_data).merge({
           "signature"=>encoded_signature,
           "data"=>encoded_data 
-        })
+        }))
         logger.info "  Facebook Parameters: #{fbparams.inspect}"
       end
     end

@@ -8,7 +8,7 @@ module DoesFacebook
     
     # Access the Facebook-specific configuration for the given environment:
     def facebook_config
-      @@facebook_config ||= all_facebook_config[Rails.env]
+      @@facebook_config ||= HashWithIndifferentAccess.new(all_facebook_config[Rails.env])
     end
     
     # Load configuration from YAML file for all environments:
