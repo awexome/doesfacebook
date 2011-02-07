@@ -5,6 +5,16 @@
 
 module DoesFacebookHelper
   
+  # Return the current application id to the view
+  def app_id
+    controller.send(:facebook_config)["app_id"]
+  end
+  
+  # Return the current app callback URL
+  def app_callback_url
+    controller.send(:facebook_config)["callback_url"]
+  end
+  
   # Generate a URL that points within the Facebook canvas
   def url_for_canvas(url_opts={})
     canvas_name = controller.send(:facebook_config)["canvas_name"]

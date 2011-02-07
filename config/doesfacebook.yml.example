@@ -1,0 +1,25 @@
+# AWEXOME LABS
+# Beyond12
+#
+# Example Facebook Configuration File
+
+development:
+  app_id: 1234567890
+  api_key: 1234567890abcdefghijklmnopqrsttuv
+  secret_key: 1234567890abcdefghijklmnopqrsttuv
+  canvas_name: your_canvas_name
+  callback_url: http://your.dev.server.com/and/path
+  
+staging:
+  app_id: 1234567890
+  api_key: 1234567890abcdefghijklmnopqrsttuv
+  secret_key: 1234567890abcdefghijklmnopqrsttuv
+  canvas_name: your_canvas_name
+  callback_url: http://your.dev.server.com/and/path
+  
+production:
+  app_id: 1234567890
+  api_key: 1234567890abcdefghijklmnopqrsttuv
+  secret_key: 1234567890abcdefghijklmnopqrsttuv
+  canvas_name: your_canvas_name
+  callback_url: http://your.dev.server.com/and/path

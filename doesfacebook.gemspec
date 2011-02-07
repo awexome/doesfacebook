@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     "app/helpers/does_facebook_helper.rb",
+    "config/doesfacebook.yml.example",
     "lib/doesfacebook.rb",
     "lib/doesfacebook/config.rb",
     "lib/doesfacebook/filters.rb",
