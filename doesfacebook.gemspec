@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "config/doesfacebook.yml.example",
     "lib/doesfacebook.rb",
     "lib/doesfacebook/config.rb",
+    "lib/doesfacebook/controls.rb",
     "lib/doesfacebook/filters.rb",
     "lib/doesfacebook/session.rb"
   ]
