@@ -1,15 +1,82 @@
+= DoesFacebook
 
-= DoesFacebook Gem
+The Awexome Labs rails plugin for handling Facebook application credentials and authentication. 
+Also provides helpers and convenience methods for canvas applications.
 
-A paper-thin plugin for parsing Facebook signed request parameters for use in applications
-appearing on the Facebook canvas or within Page tabs.
+You may also be interested in accessing content on the Facebook Open Graph. For that, consider
+this gem's brother from the same mother, DoesOpenGraph
 
 
 == Installation
 
-To include DoFacebook in your Rails 3 projects, add this dependency to your Gemfile:
+To install the gem, do the usual:
 
-gem "dofacebook", ">=0.2", :git=>"git://github.com/awexome/dofacebook.git"
+  gem install doesfacebook
+  
+If you plan on using DoesFacebook in a project with a Gemfile:
+
+  gem "doesfacebook", ">=0.3.2"
+  
+You can live on the edge, too, if you like:
+
+  gem "doesfacebook", ">=0.3.2", :git=>"git://github.com/awexome/doesfacebook.git"
+
+
+== Configuration
+
+You configure DoesFacebook in much the same way you'll configure other Facebook integration
+helper plugins. Add a "doesfacebook.yml" file to you config/ directory with the a config for
+each environment in the following format:
+
+  development:
+    app_id: 1234567890
+    api_key: 1234567890abcdefghijklmnopqrsttuv
+    secret_key: 1234567890abcdefghijklmnopqrsttuv
+    canvas_name: your_canvas_name
+    callback_url: http://your.dev.server.com/and/path
+
+These parameters relate to settings in the Facebook Developers application configuration panel,
+and should be easy to copy and paste in as you need for each application.
+
+
+== Usage
+
+To parse requests, add the following declaration to your controller:
+
+  does_facebook
+
+Now, with each incoming request, DoesFacebook will parse the signed_request_parameter against your
+application's keys, as described at http://developers.facebook.com/docs/authentication/signed_request
+
+This allows your application to verify requests from Facebook, properly handle Facebook POSTs via
+canvas and within page tabs.
+
+You also get helpers for your views that will make many aspects of developing on the Facebook platform
+easier:
+
+  app_id
+  => The current application's id, parsed from doesfacebook.yml
+
+  app_callback_url
+  => The current application's callback URL, parsed from doesfacebook.yml
+
+  app_canvas_name
+  => The current application's canvas shortname, parsed from doesfacebook.yml
+
+  app_canvas_url
+  => The full URL to the application canvas (e.g., http://apps.facebook.com/your_canvas_name)
+
+  url_for_canvas(url_opts={})
+  => Like the standard url_for, but ensures the endpoint is in the Facebook canvas
+
+  link_to_canvas(text, url_opts={}, html_opts={})
+  => Use as you would the regular link_to helper; generates links to the canvas and properly
+     targets the link to "_top"
+
+Other helpers and useful shortcuts being added regularly.
+
+
+
 
 
 == Copyright
