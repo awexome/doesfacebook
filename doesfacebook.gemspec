@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{doesfacebook}
-  s.version = "0.3.3"
+  s.version = "0.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["mccolin"]
-  s.date = %q{2011-02-12}
+  s.date = %q{2011-02-14}
   s.description = %q{Paper-thin Facebook validation and signed request parsing Rails plugin}
   s.email = %q{info@awexomelabs.com}
   s.extra_rdoc_files = [
