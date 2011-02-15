@@ -17,10 +17,10 @@ module DoesFacebook
           digested = OpenSSL::HMAC.digest("sha256", app_secret, encoded_data)
           valid = (digested == decoded_signature)
           if valid
-            logger.info "DoFacebook: Signed Request Valid."
+            logger.info "  Facebook Signed Request Valid."
           else
-            logger.info "DoFacebook: Invalid Signed Request. Ensure request from Facebook."
-            raise "DoFacebook: Invalid Signed Request. Ensure request from Facebook."
+            logger.info "  Facebook Signed Request is not Valid. Ensure request is from Facebook."
+            raise "DoesFacebook: Invalid Signed Request. Ensure request is from Facebook."
           end
         end
       end

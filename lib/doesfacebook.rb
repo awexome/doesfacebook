@@ -17,7 +17,7 @@ module DoesFacebook
     # engine_name :doesfacebook
   end
   
-  # Return the current working version of DoFacebook from VERSION file:
+  # Return the current working version of DoesFacebook from VERSION file:
   def self.version
     @@version ||= File.open(File.join(File.dirname(__FILE__), "..", "VERSION"), "r").read
   end

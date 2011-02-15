@@ -10,6 +10,11 @@ module DoesFacebookHelper
     controller.send(:facebook_config)[:app_id]
   end
   
+  # Return the API key of the current application to the view
+  def api_key
+    controller.send(:facebook_config)[:api_key]
+  end
+  
   # Return the current app callback URL
   def app_callback_url
     controller.send(:facebook_config)[:callback_url]
