@@ -47,3 +47,23 @@ module ActionController
   end
 end # ActionController
 
+
+module ActionMailer
+  class Base
+    
+    # Call this method within your controller to parse configuration and enabled
+    # session validation and parsing
+    def self.does_facebook
+      self.instance_eval do 
+        include DoesFacebook::Config
+        helper :does_facebook
+      
+        protected
+        attr_reader :fbparams
+      end
+    end
+    
+  end
+end # ActionMailer
+
+
