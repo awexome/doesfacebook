@@ -27,12 +27,13 @@ module DoesFacebookHelper
   
   # Return the full canvas URL:
   def app_canvas_url
-    "http://apps.facebook.com/#{app_canvas_name}"
+    request.ssl? ? "https://apps.facebook.com/#{app_canvas_name}" : "http://apps.facebook.com/#{app_canvas_name}"
   end
   
   # Generate a URL that points within the Facebook canvas
   def url_for_canvas(url_opts={})
-    canvas_root = File.join("http://apps.facebook.com", app_canvas_name)
+    apps_root = request.ssl? ? "https://apps.facebook.com/" : "http://apps.facebook.com/"
+    canvas_root = File.join(apps_root, app_canvas_name)
     if url_opts.is_a?(Hash)
       return File.join(canvas_root, url_for(url_opts))
     elsif url_opts.include?("://")
