@@ -17,7 +17,11 @@ module DoesFacebookHelper
   
   # Return the current app callback URL
   def app_callback_url
-    controller.send(:facebook_config)[:callback_url]
+    if request.ssl?
+      controller.send(:facebook_config)[:ssl_callback_url] || controller.send(:facebook_config)[:callback_url]
+    else
+      controller.send(:facebook_config)[:callback_url]
+    end
   end
   
   # Return the current app canvas name:

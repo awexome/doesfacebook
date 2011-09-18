@@ -22,4 +22,5 @@ production:
   api_key: 1234567890abcdefghijklmnopqrsttuv
   secret_key: 1234567890abcdefghijklmnopqrsttuv
   canvas_name: your_canvas_name
-  callback_url: http://your.dev.server.com/and/path
+  callback_url: http://your.server.com/and/path
+  ssl_callback_url: https://your.secure.server.com/and/path
