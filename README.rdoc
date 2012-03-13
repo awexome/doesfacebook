@@ -3,8 +3,8 @@
 The Awexome Labs rails plugin for handling Facebook application credentials and authentication. 
 Also provides helpers and convenience methods for canvas applications.
 
-You may also be interested in accessing content on the Facebook Open Graph. For that, consider
-this gem's brother from the same mother, DoesOpenGraph
+You may also be interested in accessing content on Facebooks Open Graph API. For that, consider
+this gem's brother from the same mother, DoesOpenGraph[https://github.com/awexome/doesopengraph].
 
 
 == Installation
@@ -15,65 +15,86 @@ To install the gem, do the usual:
   
 If you plan on using DoesFacebook in a project with a Gemfile:
 
-  gem "doesfacebook", ">=0.3.2"
+  gem "doesfacebook"
   
-You can live on the edge, too, if you like:
+You can live on the edge, too:
 
-  gem "doesfacebook", ">=0.3.2", :git=>"git://github.com/awexome/doesfacebook.git"
+  gem "doesfacebook", :git=>"git://github.com/awexome/doesfacebook.git"
 
 
 == Configuration
 
-You configure DoesFacebook in much the same way you'll configure other Facebook integration
-helper plugins. Add a "doesfacebook.yml" file to you config/ directory with the a config for
-each environment in the following format:
+You can configure your Facebook applications for use in your Rails project by specifying them
+within the "doesfacebook.yml" file under config/
 
-  development:
+To generate a boilerplate configuration file, run the generator:
+
+  rails generate does_facebook:config
+  
+The appropriate application configuration will be loaded for each request based on the callback
+path of your application. The host of each incoming request will be compared against the callback_url
+or ssl_callback_url fields of your app. A sample configuration looks like this:
+
+  my_sweet_facebook_app:
     app_id: 1234567890
-    api_key: 1234567890abcdefghijklmnopqrsttuv
-    secret_key: 1234567890abcdefghijklmnopqrsttuv
-    canvas_name: your_canvas_name
-    callback_url: http://your.dev.server.com/and/path
+    secret_key: a1b2c3d4e5f6g7h8i9j0k1l
+    canvas_name: my_sweet_canvas_name
+    callback_url: http://your.server.com/and/path
+    ssl_callback_url: https://your.secure.server.com/and/path
+
+Top-level keys in this file are configuration names. This allows you to specify many different apps
+which can be used within any environment, provided they have different callback patterns.
+
+If you do have one app for each environment, however, naming an app after the corresponding Rails
+environment ("development","production",etc.) will provide a fallback should the request host not
+directly resolve to a callback_url
+
+The typical configuration options are as follows:
+
+* (({app_id})): Facebook ID of your application
+* (({secret_key})): Facebook secret key of your application (used to parse and validate Facebook requests)
+* (({canvas_name})): The "myapp" from "http://apps.facebook.com/myapp" used frequently for link generation and redirection
+* (({callback_url})): The server callback URL for your app. Used to identify the proper configuration which should be loaded for each request.
+* (({ssl_callback_url})): The server callback for secure, HTTPS requests. Required for production apps. Can be different from your non-secure (({callback_url}))
 
 These parameters relate to settings in the Facebook Developers application configuration panel,
-and should be easy to copy and paste in as you need for each application.
+which you can review at https://developers.facebook.com/apps and should be easy to copy and paste
+in as you need for each application.
 
 
 == Usage
 
-To parse requests, add the following declaration to your controller:
+To parse and validate requests from Facebook, simply add the following declaration to your controller:
 
   does_facebook
 
-Now, with each incoming request, DoesFacebook will parse the signed_request_parameter against your
+Now, with each incoming request, DoesFacebook will parse the (({signed_request})) parameter against your
 application's keys, as described at http://developers.facebook.com/docs/authentication/signed_request
 
-This allows your application to verify requests from Facebook, properly handle Facebook POSTs via
-canvas and within page tabs.
+This allows your application to verify and properly handle requests from Facebook, as well as view any
+additional data and parameters your app is sent by Facebook, such as the current user ID, active
+Facebook page, and more.
 
-You also get helpers for your views that will make many aspects of developing on the Facebook platform
-easier:
+Within your controllers which declare (({does_facebook})) (or inherit from a controller which does), you
+will now have access to the following niceties:
 
-  app_id
-  => The current application's id, parsed from doesfacebook.yml
+* (({redirect_to_canvas})): Generate a JS top frame redirection which keeps users inside your application's canvas as opposed to loading links only within your app's iframe
+* (({@fbparams})): This hash will be set with all keys and values Facebook provided to you for this request (things like user id, page id, logged in status, region, locale, etc.)
 
-  app_callback_url
-  => The current application's callback URL, parsed from doesfacebook.yml
+Within your views, you have access to a wealth of helpers that will make many aspects of developing
+against the Facebook platform easier:
 
-  app_canvas_name
-  => The current application's canvas shortname, parsed from doesfacebook.yml
-
-  app_canvas_url
-  => The full URL to the application canvas (e.g., http://apps.facebook.com/your_canvas_name)
-
-  url_for_canvas(url_opts={})
-  => Like the standard url_for, but ensures the endpoint is in the Facebook canvas
-
-  link_to_canvas(text, url_opts={}, html_opts={})
-  => Use as you would the regular link_to helper; generates links to the canvas and properly
-     targets the link to "_top"
+* (({app_id})): The current application's id, parsed from doesfacebook.yml
+* (({app_callback_url})): The current application's callback URL, parsed from doesfacebook.yml
+* (({app_canvas_name})): The current application's canvas shortname, parsed from doesfacebook.yml
+* (({app_canvas_url})): The full URL to the application canvas (e.g., http://apps.facebook.com/myapp)
+* (({url_for_canvas(url_opts={})})): Like the standard url_for, but ensures the endpoint is in the Facebook canvas
+* (({link_to_canvas(text, url_opts={}, html_opts={})})): Use as you would the regular link_to helper; generates links to the canvas and properly targets the link to "_top" frame to keep app within canvas and not break into your iframe
 
 Other helpers and useful shortcuts being added regularly.
+
+
+Now, you are armed with the tools you need to build an app within the Facebook platform simply and quickly.
 
 
 
@@ -81,5 +102,5 @@ Other helpers and useful shortcuts being added regularly.
 
 == Copyright
 
-Copyright 2011 Awexome Labs, LLC http://awexomelabs.com
+Copyright 2011-12 Awexome Labs, LLC http://awexomelabs.com
 
