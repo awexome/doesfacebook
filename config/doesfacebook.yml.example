@@ -1,25 +1,31 @@
 # AWEXOME LABS
-# Beyond12
+# DoesFacebook Configuration File
 #
-# Example Facebook Configuration File
+# The appropriate application configuration will be loaded for each
+# request based on the callback path of your application. The host
+# of each incoming request will be compared against the callback_url
+# or ssl_callback_url fields of your app.
+#
+# Top-level keys in this file are configuration names. If you have one
+# app for each environment, however, naming an app after the corresponding
+# Rails environment ("development","production",etc.) will provide a
+# fallback should the request host not directly resolve to a callback_url
+#
 
-development:
+name_of_app:
   app_id: 1234567890
-  api_key: 1234567890abcdefghijklmnopqrsttuv
   secret_key: 1234567890abcdefghijklmnopqrsttuv
   canvas_name: your_canvas_name
   callback_url: http://your.dev.server.com/and/path
   
-staging:
+name_of_another_app:
   app_id: 1234567890
-  api_key: 1234567890abcdefghijklmnopqrsttuv
   secret_key: 1234567890abcdefghijklmnopqrsttuv
   canvas_name: your_canvas_name
   callback_url: http://your.dev.server.com/and/path
   
-production:
+name_of_production_app:
   app_id: 1234567890
-  api_key: 1234567890abcdefghijklmnopqrsttuv
   secret_key: 1234567890abcdefghijklmnopqrsttuv
   canvas_name: your_canvas_name
   callback_url: http://your.server.com/and/path
