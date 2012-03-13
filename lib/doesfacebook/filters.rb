@@ -22,6 +22,8 @@ module DoesFacebook
             logger.info "  Facebook Signed Request is not Valid. Ensure request is from Facebook."
             raise "DoesFacebook: Invalid Signed Request. Ensure request is from Facebook."
           end
+        else
+          logger.info "  Facebook Signed Request cannot be verified without app configuration"
         end
       end
     end
