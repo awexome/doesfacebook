@@ -9,12 +9,22 @@ require 'doesfacebook/config'
 require 'doesfacebook/filters'
 require 'doesfacebook/controls'
 require 'doesfacebook/session'
+require 'doesfacebook/middleware'
+
+require 'generators/doesfacebook/config/config_generator'
 
 module DoesFacebook
 
   # Create a Rails Engine
   class Engine < Rails::Engine
     # engine_name :doesfacebook
+  end
+  
+  # Create a Railtie for Rack, config injection
+  class Railtie < Rails::Railtie
+    initializer "doesfacebook.init" do |app|
+      app.middleware.use DoesFacebook::Middleware
+    end
   end
   
   # Return the current working version of DoesFacebook from VERSION file:
