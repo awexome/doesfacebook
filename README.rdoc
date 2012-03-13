@@ -51,7 +51,7 @@ directly resolve to a callback_url
 
 The typical configuration options are as follows:
 
-* (({app_id})): Facebook ID of your application
+* %app_id% : Facebook ID of your application
 * (({secret_key})): Facebook secret key of your application (used to parse and validate Facebook requests)
 * (({canvas_name})): The "myapp" from "http://apps.facebook.com/myapp" used frequently for link generation and redirection
 * (({callback_url})): The server callback URL for your app. Used to identify the proper configuration which should be loaded for each request.
