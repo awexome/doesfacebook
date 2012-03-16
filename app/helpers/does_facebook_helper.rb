@@ -48,4 +48,21 @@ module DoesFacebookHelper
     content_tag("a", text, html_opts.merge(:rev=>"canvas", :href=>url, :target=>"_top"), false)
   end
   
+  # Insert properly-formed FB.init() call with fb-root doc element
+  def fb_init(opts={})
+    opts = {:status=>true, :cookie=>true, :xfbml=>true}.merge(opts)
+    opts.merge!(:appId=>app_id)
+    raw("""<div id=\"fb-root\"></div>
+    <script src=\"http://connect.facebook.net/en_US/all.js\"></script>
+    <script>
+      FB.init(#{opts.to_json});
+      window.fbAsyncInit = function() {
+        FB.XFBML.parse();
+        FB.Canvas.setAutoGrow();
+      }
+    </script>
+    """)
+  end
+  
+  
 end
