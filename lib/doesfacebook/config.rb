@@ -16,6 +16,7 @@ module DoesFacebook
         app_name, app_config = app_settings
         if app_config
           Rails.logger.info("  Facebook configuration for app \"#{app_name}\" loaded via request to host #{request.host}")
+          Rails.logger.info("  Facebook configuration details:\n#{app_config.inspect}\n\n")
           return @@facebook_config = HashWithIndifferentAccess.new(app_config)
         end
       end
