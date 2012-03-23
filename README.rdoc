@@ -38,7 +38,7 @@ or ssl_callback_url fields of your app. A sample configuration looks like this:
   my_sweet_facebook_app:
     app_id: 1234567890
     secret_key: a1b2c3d4e5f6g7h8i9j0k1l
-    canvas_name: my_sweet_canvas_name
+    namespace: my_sweet_canvas_name
     callback_url: http://your.server.com/and/path
     ssl_callback_url: https://your.secure.server.com/and/path
 
@@ -53,7 +53,7 @@ The typical configuration options are as follows:
 
 * app_id: Facebook ID of your application
 * secret_key: Facebook secret key of your application (used to parse and validate Facebook requests)
-* canvas_name: The "myapp" from "http://apps.facebook.com/myapp" used frequently for link generation and redirection
+* namespace: The "myapp" from "http://apps.facebook.com/myapp" used frequently for link generation and redirection (previously, this configuration field was known as "canvas_name", but Facebook has deprecated that name in favor of "namespace")
 * callback_url: The server callback URL for your app. Used to identify the proper configuration which should be loaded for each request.
 * ssl_callback_url: The server callback for secure, HTTPS requests. Required for production apps. Can be different from your non-secure callback_url
 
@@ -86,7 +86,7 @@ against the Facebook platform easier:
 
 * app_id: The current application's id, parsed from doesfacebook.yml
 * app_callback_url: The current application's callback URL, parsed from doesfacebook.yml
-* app_canvas_name: The current application's canvas shortname, parsed from doesfacebook.yml
+* app_namespace: The current application's canvas shortname, parsed from doesfacebook.yml (aliased as "app_canvas_name" for backwards compatibility)
 * app_canvas_url: The full URL to the application canvas (e.g., http://apps.facebook.com/myapp)
 * url_for_canvas(url_opts={}): Like the standard url_for, but ensures the endpoint is in the Facebook canvas
 * link_to_canvas(text, url_opts={}, html_opts={}): Use as you would the regular link_to helper; generates links to the canvas and properly targets the link to "_top" frame to keep app within canvas and not break into your iframe

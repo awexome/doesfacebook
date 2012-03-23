@@ -15,18 +15,18 @@
 name_of_app:
   app_id: 1234567890
   secret_key: 1234567890abcdefghijklmnopqrsttuv
-  canvas_name: your_canvas_name
+  namespace: your_canvas_name
   callback_url: http://your.dev.server.com/and/path
   
 name_of_another_app:
   app_id: 1234567890
   secret_key: 1234567890abcdefghijklmnopqrsttuv
-  canvas_name: your_canvas_name
+  namespace: your_canvas_name
   callback_url: http://your.dev.server.com/and/path
   
 name_of_production_app:
   app_id: 1234567890
   secret_key: 1234567890abcdefghijklmnopqrsttuv
-  canvas_name: your_canvas_name
+  namespace: your_canvas_name
   callback_url: http://your.server.com/and/path
   ssl_callback_url: https://your.secure.server.com/and/path

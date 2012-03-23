@@ -19,20 +19,20 @@ module DoesFacebookHelper
     end
   end
   
-  # Return the current app canvas name:
-  def app_canvas_name
-    controller.send(:facebook_config)[:canvas_name]
+  # Return the current app namespace:
+  def app_namespace
+    controller.send(:facebook_config)[:namespace]
   end
+  alias_method :app_canvas_name, :app_namespace     # <= Deprecation of "canvas_name", but still aliased
   
   # Return the full canvas URL:
   def app_canvas_url
-    request.ssl? ? "https://apps.facebook.com/#{app_canvas_name}" : "http://apps.facebook.com/#{app_canvas_name}"
+    "#{request.ssl? ? "https://" : "http://"}apps.facebook.com/#{app_namespace}"
   end
   
   # Generate a URL that points within the Facebook canvas
   def url_for_canvas(url_opts={})
-    apps_root = request.ssl? ? "https://apps.facebook.com/" : "http://apps.facebook.com/"
-    canvas_root = File.join(apps_root, app_canvas_name)
+    canvas_root = app_canvas_url
     if url_opts.is_a?(Hash)
       return File.join(canvas_root, url_for(url_opts))
     elsif url_opts.include?("://")

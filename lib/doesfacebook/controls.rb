@@ -15,7 +15,7 @@ module DoesFacebook
     # Mechanism for redirecting within the Facebook canvas:
     def redirect_to_canvas_old(opts={})
       raise MalformedUrlOptions.new("Options passed to `redirect_to_canvas` must be a URL options Hash") unless opts.is_a?(Hash)
-      dest = File.join("http://apps.facebook.com/", facebook_config[:canvas_name], url_for(opts.merge(:only_path=>true))) 
+      dest = File.join("http://apps.facebook.com/", facebook_config[:namespace], url_for(opts.merge(:only_path=>true))) 
       logger.warn "DoesFacebook: redirect_to_canvas_old method is deprecated and does not support HTTPS."
       logger.warn "DoesFacebook: Use redirect_to_canvas for HTTPS-support and JavaScript-based redirection."
       logger.info "Canvas Redirect to #{opts.inspect}=>#{dest}"
@@ -26,7 +26,7 @@ module DoesFacebook
     def redirect_to_canvas(opts={})
       raise MalformedUrlOptions.new("Options passed to `redirect_to_canvas` must be a URL options Hash") unless opts.is_a?(Hash)
       apps_root = request.ssl? ? "https://apps.facebook.com/" : "http://apps.facebook.com/"
-      dest = File.join(apps_root, facebook_config[:canvas_name], url_for(opts.merge(:only_path=>true))) 
+      dest = File.join(apps_root, facebook_config[:namespace], url_for(opts.merge(:only_path=>true))) 
       @facebook_redirect_url = dest
       logger.info "Canvas Redirect to #{opts.inspect}=>#{dest}"
       begin
