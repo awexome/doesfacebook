@@ -12,7 +12,7 @@ module DoesFacebook
       @facebook_config ||= nil
       return @facebook_config unless @facebook_config.nil?
       app_name, app_config = all_facebook_config.find do |name, config|
-        test_callback = if ssl && config["ssl_callback_url"]
+        test_callback = if request.ssl? && config["ssl_callback_url"]
           config["ssl_callback_url"]
         else
           config["callback_url"]
