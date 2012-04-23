@@ -12,9 +12,9 @@ module DoesFacebook
     
     def call(env)
       request = Rack::Request.new(env)
-      if !request.xhr? && request.POST["signed_request"]
+      if request.referer.match(/facebook\.com/) && request.POST["signed_request"]
         env["REQUEST_METHOD"] = "GET"
-        Rails.logger.info("  Facebook POST request converted to GET request")
+        Rails.logger.info("  Facebook POST request from #{request.referer} converted to GET request")
       end
       @app.call(env)
     end
