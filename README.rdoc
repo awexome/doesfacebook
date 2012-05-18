@@ -75,6 +75,14 @@ This allows your application to verify and properly handle requests from Faceboo
 additional data and parameters your app is sent by Facebook, such as the current user ID, active
 Facebook page, and more.
 
+By default, to enhance your iframe development, the "signed_request" parameter from Facebook will be
+stuffed into the session and subsequent requests that lack a "signed_request" parameter (links from
+your internal iframe clicks, perhaps), will used this signed_request. This allows you to build a canvas
+or page tab application like any other web application and not worry about passing around the signed_request
+parameter yourself.
+
+  does_facebook :session=>false     # <== Use this invocation to prevent session stuffing
+
 Within your controllers which declare _does_facebook_ (or inherit from a controller which does), you
 will now have access to the following niceties:
 

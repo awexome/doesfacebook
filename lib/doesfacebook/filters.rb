@@ -8,6 +8,19 @@ module DoesFacebook
     
     protected
     
+    # Captures a signed_request parameter and manipulates the session to allow for
+    # a signed_request to be passed from iframe request to iframe request
+    def sessionify_signed_request
+      if request_parameter = request.params["signed_request"]
+        session[:signed_request] = request_parameter
+        logger.info "  Facebook Signed Request received. Stored/updated in session."
+      else
+        params["signed_request"] = session[:signed_request]
+        logger.info "  No Facebook Signed Request received. Loaded, if present, from session."
+      end
+    end
+    
+    
     # Ensures, using configuration options, that the request was signed by Facebook
     def validate_signed_request
       if request_parameter = request.params["signed_request"]

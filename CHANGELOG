@@ -1,0 +1,48 @@
+# AWEXOME LABS
+# DoesFacebook Change Log
+
+
+v0.5.5    May 18 2012
+ * Add sessionify_signed_parameter filter for signed_request management
+    on non-POSTed, subsequent requests within iframes
+ * Add opts parameter to does_facebook invocation with support for
+    toggling :session behavior
+ * Documentation updates for session switch on does_facebook invocation
+
+v0.5.4      Apr 30 2012
+ * Middleware fix for first-strike page loads
+
+v0.5.3      Apr 23 2012
+ * Middleware POST rewrite now performed on requests from Facebook only
+ 
+v0.5.2      Apr 04 2012
+ * Additional fix for SSL/HTTPS configuration loader
+ 
+v0.5.1      Apr 04 2012
+ * Fix for SSL/HTTPS configuration loader logic
+ 
+v0.5.0      Mar 28 2012
+ * Configuration loader completely rewritten, is now request URL based
+ * Configuration logging messages streamlined
+ 
+v0.5.0.pre  Winter 2012 (various "pre" versions)
+ * "namespace" configuration key adopted replacing "canvas_name"
+ * "canvas_name" configuration key deprecated (still supported, but
+    triggers deprecation logger message)
+ * app_namespace helper replaces app_canvas_name helper
+ * url_for_canvas, link_to_canvas updated to use namespace
+ * Documentation updates for changes to configuration
+ * fb_init() helper added for FBJS invocation with app properties
+ * AJAX, xhr requests are passed through Middleware POST rewrite
+ * Remove api_key helpers, support (field long deprecated by Facebook)
+ * Remove api_key configuration key from doesfacebook.yml
+ * Add Rack Middleware rewriting POST requests to appropriate methods
+    when signed_request is present
+
+v0.4.3      Sep 18 2011
+ * Add support for SSL/HTTPS configured apps with "ssl_callback_url"
+    configuration key
+ * Update to url_for_canvas, link_to_canvas, redirect helpers to support
+    SSL/HTTPS configured applications
+
+

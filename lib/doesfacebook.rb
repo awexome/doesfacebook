@@ -40,13 +40,13 @@ module ActionController
     
     # Call this method within your controller to parse configuration and enabled
     # session validation and parsing
-    def self.does_facebook
+    def self.does_facebook(opts={})
       self.instance_eval do 
         include DoesFacebook::Config
         include DoesFacebook::Controls
         include DoesFacebook::Filters
-        prepend_before_filter :parse_signed_request
-        prepend_before_filter :validate_signed_request
+        prepend_before_filter :parse_signed_request, :validate_signed_request
+        prepend_before_filter :sessionify_signed_request unless opts[:session]==false
         helper :does_facebook
       
         protected
