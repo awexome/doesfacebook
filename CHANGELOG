@@ -2,7 +2,7 @@
 # DoesFacebook Change Log
 
 
-v0.5.5    May 18 2012
+v0.5.5      May 18 2012
  * Add sessionify_signed_parameter filter for signed_request management
     on non-POSTed, subsequent requests within iframes
  * Add opts parameter to does_facebook invocation with support for

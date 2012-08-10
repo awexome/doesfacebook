@@ -1,0 +1,25 @@
+# AWEXOME LABS
+# DoesFacebook Road Map
+
+
+v0.6.0
+ * Add new and clean up existing helper methods
+ * Bring proper url_for_canvas support into controllers
+ * Increase flexibility of JS-based redirect with custom partial,
+    template, message, and/or delay loaded from configuration or
+    directly in method call
+
+v1.0.0
+ * Remove support for previously-deprecated methods
+ * Change format of configuration, following config/initializers pattern
+ * Allow app configurations to be loaded via YAML, Proc, database
+ * Change standards and optimizations for helpers, filters
+ * Provide user, page, and referrer details to apps in filters
+ * Add deeper integration options with Graph API via DoesOpenGraph
+
+
+Support for v0.6.* releases will continue alongside v1.0.* releases
+following the release of v1.0.0, however only bugfixes and tweaks will
+be added to the v0.6.* branch once v1.0.0 is released. All new feature
+development and required alterations for Facebook-initiated changes 
+will take place in the v1.0.* branch only.
