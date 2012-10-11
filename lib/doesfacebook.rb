@@ -15,19 +15,17 @@ require "generators/doesfacebook/config/config_generator"
 
 module DoesFacebook
 
-  # Create a Rails Engine
+  # Add configuration and features to Rails as an Engine:
   class Engine < Rails::Engine
-    # engine_name :doesfacebook
-  end
-  
-  # Create a Railtie for Rack, config injection
-  class Railtie < Rails::Railtie
     initializer "doesfacebook.init" do |app|
       app.middleware.use DoesFacebook::Middleware
     end
+
+    paths["app/helpers"] = "lib/helpers"
   end
   
-  # Return the current working version of DoesFacebook from VERSION file:
+  
+  # Return the current version of the gem:
   def self.version
     @@version ||= File.open(File.join(File.dirname(__FILE__), "..", "VERSION"), "r").read
   end
@@ -56,24 +54,5 @@ module ActionController
     
   end
 end # ActionController
-
-
-module ActionMailer
-  class Base
-    
-    # Call this method within your controller to parse configuration and enabled
-    # session validation and parsing
-    def self.does_facebook
-      self.instance_eval do 
-        include DoesFacebook::Config
-        helper :does_facebook
-      
-        protected
-        attr_reader :fbparams
-      end
-    end
-    
-  end
-end # ActionMailer
 
 
