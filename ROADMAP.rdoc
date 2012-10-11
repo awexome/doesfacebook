@@ -18,8 +18,7 @@ functionality.
 Planned features:
 
 * Add new and clean up existing helper methods
-* Bring proper url_for_canvas support into controllers
-* Increase flexibility of JS-based redirect with custom partial, template, message, and/or delay loaded from configuration or directly in method call
+* Add proper deprecation messaging for deprecated configurations and methods
 
 == v1.0.0
 
@@ -30,12 +29,14 @@ versions of the library.
 
 Planned features:
 
- * Remove support for previously-deprecated methods
- * Change format of configuration, following config/initializers pattern
- * Allow app configurations to be loaded via YAML, Proc, database
- * Change standards and optimizations for helpers, filters
- * Provide user, page, and referrer details to apps in filters
- * Add deeper integration options with Graph API via DoesOpenGraph
+* Remove support for previously-deprecated methods
+* Change format of configuration, following config/initializers pattern
+* Allow app configurations to be loaded via YAML, Proc, database
+* Bring proper url_for_canvas support into controllers
+* Increase flexibility of JS-based redirect with custom partial, template, message, and/or delay loaded from configuration or directly in method call
+* Change standards and optimizations for helpers, filters
+* Provide user, page, and referrer details to apps in filters
+* Add deeper integration options with Graph API via DoesOpenGraph
 
 
 == Support
