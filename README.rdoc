@@ -3,8 +3,11 @@
 The Awexome Labs rails plugin for handling Facebook application credentials and authentication. 
 Also provides helpers and convenience methods for canvas applications.
 
-You may also be interested in accessing content on Facebooks Open Graph API. For that, consider
-this gem's brother from the same mother, DoesOpenGraph[https://github.com/awexome/doesopengraph].
+== v1.0 DOCUMENTATION PENDING REWRITE
+
+The DoesFacebook gem is undergoing an API rewrite and reconfiguration for v1.0. The documentation
+below is for prior versions of this gem. While largely accurate, significant changes to the codebase
+will make much of it obsolete.
 
 
 == Installation
