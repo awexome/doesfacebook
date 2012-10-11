@@ -5,6 +5,7 @@ require "doesfacebook"
 require "rails"
 require "action_controller"
 
+require "doesfacebook/configuration"
 require "doesfacebook/config"
 require "doesfacebook/filters"
 require "doesfacebook/controls"
