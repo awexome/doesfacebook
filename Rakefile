@@ -1,21 +1,64 @@
-# AWEXOME LABS
-# Rakefile
+# encoding: utf-8
 
+require "rubygems"
+require "bundler"
 begin
-  require "jeweler"
-  Jeweler::Tasks.new do |gem|
-    gem.name = "doesfacebook"
-    gem.summary = "Paper-thin Facebook validation and signed request parsing Rails plugin"
-    gem.description = "Paper-thin Facebook validation and signed request parsing Rails plugin"
-    gem.files = Dir["{lib}/**/*", "{app}/**/*"]
-    gem.email = "info@awexomelabs.com"
-    gem.homepage = "http://awexomelabs.com/"
-    gem.authors = ["mccolin"]
-    gem.version = File.exist?('VERSION') ? File.read('VERSION') : "NOVERSION"
-    # other fields that would normally go in your gemspec
-    # like authors, email and has_rdoc can also be included here
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+require "rake"
 
-  end
-rescue
-  puts "Jeweler or one of its dependencies is not installed."
+require "jeweler"
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "doesfacebook"
+  gem.homepage = "http://github.com/awexome/doesfacebook"
+  gem.license = "MIT"
+  gem.summary = %Q{Lightweight gem enables your Rails application to quickly and simply integrate with Facebook}
+  gem.description = %Q{Lightweight gem enables your Rails application to quickly and simply integrate with Facebook}
+  gem.email = "engineering@awexomelabs.com"
+  gem.authors = ["Awexome Labs"]
+  # dependencies defined in Gemfile
+end
+Jeweler::RubygemsDotOrgTasks.new
+
+require "rspec/core"
+require "rspec/core/rake_task"
+RSpec::Core::RakeTask.new(:spec) do |spec|
+end
+
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.rcov = true
+end
+
+task :default => :spec
+
+# require "rake/testtask"
+# Rake::TestTask.new(:test) do |test|
+#   test.libs << "lib" << "test"
+#   test.pattern = "test/**/test_*.rb"
+#   test.verbose = true
+# end
+
+# require "rcov/rcovtask"
+# Rcov::RcovTask.new do |test|
+#   test.libs << "test"
+#   test.pattern = "test/**/test_*.rb"
+#   test.verbose = true
+#   test.rcov_opts << "--exclude "gems/*""
+# end
+
+# task :default => :test
+
+require "rdoc/task"
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?("VERSION") ? File.read("VERSION") : ""
+
+  rdoc.rdoc_dir = "rdoc"
+  rdoc.title = "DoesKeyValue #{version}"
+  rdoc.rdoc_files.include("README*")
+  rdoc.rdoc_files.include("lib/**/*.rb")
 end

@@ -5,19 +5,28 @@
 
 Gem::Specification.new do |s|
   s.name = "doesfacebook"
-  s.version = "0.6.0"
+  s.version = "1.0.0.pre1"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["mccolin"]
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.authors = ["Awexome Labs"]
   s.date = "2012-10-11"
-  s.description = "Paper-thin Facebook validation and signed request parsing Rails plugin"
-  s.email = "info@awexomelabs.com"
+  s.description = "Lightweight gem enables your Rails application to quickly and simply integrate with Facebook"
+  s.email = "engineering@awexomelabs.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
   ]
   s.files = [
+    "CHANGELOG.rdoc",
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE",
+    "README.rdoc",
+    "ROADMAP.rdoc",
+    "Rakefile",
+    "VERSION",
     "app/helpers/does_facebook_helper.rb",
+    "doesfacebook.gemspec",
     "lib/doesfacebook.rb",
     "lib/doesfacebook/config.rb",
     "lib/doesfacebook/controls.rb",
@@ -27,24 +36,34 @@ Gem::Specification.new do |s|
     "lib/generators/doesfacebook/config/config_generator.rb",
     "lib/generators/doesfacebook/config/templates/doesfacebook.yml"
   ]
-  s.homepage = "http://awexomelabs.com/"
+  s.homepage = "http://github.com/awexome/doesfacebook"
+  s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.17"
-  s.summary = "Paper-thin Facebook validation and signed request parsing Rails plugin"
+  s.summary = "Lightweight gem enables your Rails application to quickly and simply integrate with Facebook"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.1.0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_development_dependency(%q<rspec>, [">= 2.11.0"])
     else
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
+      s.add_dependency(%q<rails>, ["~> 3.1.0"])
+      s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_dependency(%q<rspec>, [">= 2.11.0"])
     end
   else
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
+    s.add_dependency(%q<rails>, ["~> 3.1.0"])
+    s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+    s.add_dependency(%q<rdoc>, ["~> 3.12"])
+    s.add_dependency(%q<rspec>, [">= 2.11.0"])
   end
 end
 
