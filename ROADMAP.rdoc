@@ -17,11 +17,9 @@ functionality.
 
 Planned features:
 
- * Add new and clean up existing helper methods
- * Bring proper url_for_canvas support into controllers
- * Increase flexibility of JS-based redirect with custom partial,
-    template, message, and/or delay loaded from configuration or
-    directly in method call
+* Add new and clean up existing helper methods
+* Bring proper url_for_canvas support into controllers
+* Increase flexibility of JS-based redirect with custom partial, template, message, and/or delay loaded from configuration or directly in method call
 
 == v1.0.0
 
