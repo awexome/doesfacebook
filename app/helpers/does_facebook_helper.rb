@@ -23,7 +23,12 @@ module DoesFacebookHelper
   def app_namespace
     controller.send(:facebook_config)[:namespace]
   end
-  alias_method :app_canvas_name, :app_namespace     # <= Deprecation of "canvas_name", but still aliased
+
+  # Deprecated: "canvas_name" configuration is deprecated, but essentially aliased to "namespace":
+  def app_canvas_name
+    ActiveSupport::Deprecation.warn "DoesFacebook: Helper and configuration key \"canvas_name\" and \"app_canvas_name\" is deprecated. Use \"namespace\" or \"app_namespace\" instead.", caller
+    app_namespace
+  end
   
   # Return the full canvas URL:
   def app_canvas_url
