@@ -6,7 +6,7 @@ source "http://rubygems.org"
 # Runtime dependencies:
 
 # This gem adds functionality to Rails applications:
-gem "rails", "~> 3.1.0"
+gem "rails", ">= 3.1.0"
 
 
 # Development dependencies:

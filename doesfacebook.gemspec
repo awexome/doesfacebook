@@ -25,16 +25,17 @@ Gem::Specification.new do |s|
     "ROADMAP.rdoc",
     "Rakefile",
     "VERSION",
-    "app/helpers/does_facebook_helper.rb",
     "doesfacebook.gemspec",
     "lib/doesfacebook.rb",
     "lib/doesfacebook/config.rb",
+    "lib/doesfacebook/configuration.rb",
     "lib/doesfacebook/controls.rb",
     "lib/doesfacebook/filters.rb",
     "lib/doesfacebook/middleware.rb",
     "lib/doesfacebook/session.rb",
     "lib/generators/doesfacebook/config/config_generator.rb",
-    "lib/generators/doesfacebook/config/templates/doesfacebook.yml"
+    "lib/generators/doesfacebook/config/templates/doesfacebook.yml",
+    "lib/helpers/does_facebook_helper.rb"
   ]
   s.homepage = "http://github.com/awexome/doesfacebook"
   s.licenses = ["MIT"]
@@ -46,20 +47,20 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>, ["~> 3.1.0"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<rspec>, [">= 2.11.0"])
     else
-      s.add_dependency(%q<rails>, ["~> 3.1.0"])
+      s.add_dependency(%q<rails>, [">= 3.1.0"])
       s.add_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<rspec>, [">= 2.11.0"])
     end
   else
-    s.add_dependency(%q<rails>, ["~> 3.1.0"])
+    s.add_dependency(%q<rails>, [">= 3.1.0"])
     s.add_dependency(%q<bundler>, ["~> 1.1.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])

@@ -6,13 +6,18 @@ require "rails"
 require "action_controller"
 
 require "doesfacebook/configuration"
-require "doesfacebook/config"
-require "doesfacebook/filters"
-require "doesfacebook/controls"
-require "doesfacebook/session"
+require "doesfacebook/error"
+require "doesfacebook/application"
+require "helpers/does_facebook_helper"
+
+# require "doesfacebook/config"
+# require "doesfacebook/filters"
+# require "doesfacebook/controls"
+# require "doesfacebook/session"
+
 require "doesfacebook/middleware"
 
-require "generators/doesfacebook/config/config_generator"
+# require "generators/doesfacebook/config/config_generator"
 
 module DoesFacebook
 
@@ -22,7 +27,7 @@ module DoesFacebook
       app.middleware.use DoesFacebook::Middleware
     end
 
-    paths["app/helpers"] = "lib/helpers"
+    paths["app/helpers"] << "lib/helpers"
   end
   
   
