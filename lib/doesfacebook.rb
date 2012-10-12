@@ -12,8 +12,7 @@ require "doesfacebook/controller_extensions"
 require "helpers/does_facebook_helper"
 # require "doesfacebook/session"
 require "doesfacebook/middleware"
-
-# require "generators/doesfacebook/config/config_generator"
+require "generators/doesfacebook/config/config_generator"
 
 module DoesFacebook
 

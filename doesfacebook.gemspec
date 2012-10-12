@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Awexome Labs"]
-  s.date = "2012-10-11"
+  s.date = "2012-10-12"
   s.description = "Lightweight gem enables your Rails application to quickly and simply integrate with Facebook"
   s.email = "engineering@awexomelabs.com"
   s.extra_rdoc_files = [
@@ -27,14 +27,13 @@ Gem::Specification.new do |s|
     "VERSION",
     "doesfacebook.gemspec",
     "lib/doesfacebook.rb",
-    "lib/doesfacebook/config.rb",
+    "lib/doesfacebook/application.rb",
     "lib/doesfacebook/configuration.rb",
-    "lib/doesfacebook/controls.rb",
-    "lib/doesfacebook/filters.rb",
+    "lib/doesfacebook/controller_extensions.rb",
+    "lib/doesfacebook/error.rb",
     "lib/doesfacebook/middleware.rb",
     "lib/doesfacebook/session.rb",
     "lib/generators/doesfacebook/config/config_generator.rb",
-    "lib/generators/doesfacebook/config/templates/doesfacebook.yml",
     "lib/helpers/does_facebook_helper.rb"
   ]
   s.homepage = "http://github.com/awexome/doesfacebook"
