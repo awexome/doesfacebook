@@ -13,16 +13,12 @@ module DoesFacebook
 
   class Application
 
+    # Define settable configuration keys for each application:
     attr_accessor :id, :secret, :namespace, :canvas_url, :secure_canvas_url
 
-    # All 
+    # Prepare with a predefined configuration:
     def initialize(opts={})
       update_options(opts)
-      # @id = opts[:id]                                 # <= "App ID" on dashboard
-      # @secret = opts[:secret]                         # <= "App Secret" on dashboard
-      # @namespace = opts[:namespace]                   # <= "Namespace" on dashboard
-      # @canvas_url = opts[:canvas_url]                 # <= "Canvas URL" under "App on Facebook"
-      # @secure_canvas_url = opts[:secure_canvas_url]   # <= "Secure Canvas URL" under "App on Facebook"
     end
 
     # Bulk set configuration options for this application

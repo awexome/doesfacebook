@@ -8,6 +8,7 @@ require "action_controller"
 require "doesfacebook/configuration"
 require "doesfacebook/error"
 require "doesfacebook/application"
+require "doesfacebook/controller_extensions"
 require "helpers/does_facebook_helper"
 
 # require "doesfacebook/config"
@@ -30,7 +31,6 @@ module DoesFacebook
     paths["app/helpers"] << "lib/helpers"
   end
   
-  
   # Return the current version of the gem:
   def self.version
     @@version ||= File.open(File.join(File.dirname(__FILE__), "..", "VERSION"), "r").read
@@ -42,9 +42,16 @@ end # DoesFacebook
 module ActionController
   class Base
     
-    # Call this method within your controller to parse configuration and enabled
-    # session validation and parsing
+    # Call this method within your controller to enable Facebook actions:
     def self.does_facebook(opts={})
+      self.instance_eval do
+        include DoesFacebook::ControllerExtensions
+        helper :does_facebook
+      end
+    end
+
+
+    def self.XX_does_facebook(opts={})
       self.instance_eval do 
         include DoesFacebook::Config
         include DoesFacebook::Controls
