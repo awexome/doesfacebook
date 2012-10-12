@@ -11,7 +11,7 @@ module DoesFacebook
     protected
 
     def fb_app
-      DoesFacebook.configuration.current_application(request)
+      @fb_app ||= DoesFacebook.configuration.current_application(request)
     end
 
     def url_for_canvas(opts={})
@@ -68,7 +68,7 @@ module DoesFacebook
         if valid = (digested == decoded_signature)
           Rails.logger.info "  Facebook Signed Request Valid."
         else
-          Rails.logger.info "  Facebook Signed Request is not Valid. Ensure request is from Facebook."
+          Rails.logger.info "  Facebook Signed Request is not Valid. Ensure request is from Facebook and correct Facebook app has been selected."
           raise DoesFacebook::RequestSignatureInvalidError.new()
         end
       end
@@ -77,6 +77,7 @@ module DoesFacebook
     # If present, parses data from the signed request and inserts it into the fbparams
     # object for use during requests
     def parse_signed_request
+      Rails.logger.info "  Facebook application \"#{fb_app.namespace}\" configuration in use for this request."
       if request_parameter = request.params["signed_request"]
         encoded_signature, encoded_data = request_parameter.split(".")
         decoded_signature = base64_url_decode(encoded_signature)
