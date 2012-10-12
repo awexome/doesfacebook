@@ -27,5 +27,11 @@ module DoesFacebook
     end
   end # MiddlewareError
 
+  class RequestSignatureInvalidError < Error
+    def initialize(message="Signed Request from Facebook is not valid.")
+      super
+    end
+  end # MiddlewareError
+
 
 end # DoesFacebook

@@ -6,11 +6,17 @@ module DoesFacebook
   class Configuration
 
     # Configurable options:
-    attr_accessor :applications
+    attr_accessor :applications, :app_selector
 
     # Declare defaults on load:
     def initialize
       @applications = Array.new
+      @app_selector = Proc.new() do |request, apps|
+        apps.find do |a|
+          callback_path = request.ssl? && a.supports_ssl? ? a.secure_canvas_url : a.canvas_url
+          request.url.match(/^#{callback_path}.*/)
+        end
+      end
     end
 
     # If an unknown settings is configured, notify the user:
@@ -24,7 +30,13 @@ module DoesFacebook
 
     # Add an application definition:
     def add_application(app)
+      app = DoesFacebook::Application.new(app) if app.is_a?(Hash)
       @applications << app
+    end
+
+    # Determine the current app given an incoming request:
+    def current_application(request)
+      app_selector.call(request, applications)
     end
 
   end # Configuration

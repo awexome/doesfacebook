@@ -10,12 +10,7 @@ require "doesfacebook/error"
 require "doesfacebook/application"
 require "doesfacebook/controller_extensions"
 require "helpers/does_facebook_helper"
-
-# require "doesfacebook/config"
-# require "doesfacebook/filters"
-# require "doesfacebook/controls"
 # require "doesfacebook/session"
-
 require "doesfacebook/middleware"
 
 # require "generators/doesfacebook/config/config_generator"
@@ -47,19 +42,9 @@ module ActionController
       self.instance_eval do
         include DoesFacebook::ControllerExtensions
         helper :does_facebook
-      end
-    end
-
-
-    def self.XX_does_facebook(opts={})
-      self.instance_eval do 
-        include DoesFacebook::Config
-        include DoesFacebook::Controls
-        include DoesFacebook::Filters
         prepend_before_filter :parse_signed_request, :validate_signed_request
-        prepend_before_filter :sessionify_signed_request unless opts[:session]==false
-        helper :does_facebook
-      
+        #prepend_before_filter :sessionify_signed_request unless opts[:session]==false
+
         protected
         attr_reader :fbparams
       end

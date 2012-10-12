@@ -10,24 +10,9 @@ module DoesFacebookHelper
     controller.send(:facebook_config)[:app_id]
   end
   
-  # Return the current app callback URL
-  def app_callback_url
-    if request.ssl?
-      controller.send(:facebook_config)[:ssl_callback_url] || controller.send(:facebook_config)[:callback_url]
-    else
-      controller.send(:facebook_config)[:callback_url]
-    end
-  end
-  
   # Return the current app namespace:
   def app_namespace
     controller.send(:facebook_config)[:namespace]
-  end
-
-  # Deprecated: "canvas_name" configuration is deprecated, but essentially aliased to "namespace":
-  def app_canvas_name
-    ActiveSupport::Deprecation.warn "DoesFacebook: Helper and configuration key \"canvas_name\" and \"app_canvas_name\" is deprecated. Use \"namespace\" or \"app_namespace\" instead.", caller
-    app_namespace
   end
   
   # Return the full canvas URL:
@@ -37,20 +22,12 @@ module DoesFacebookHelper
   
   # Generate a URL that points within the Facebook canvas
   def url_for_canvas(url_opts={})
-    canvas_root = app_canvas_url
-    if url_opts.is_a?(Hash)
-      return File.join(canvas_root, url_for(url_opts))
-    elsif url_opts.include?("://")
-      return url_opts
-    else
-      return File.join(canvas_root, url_opts)
-    end
+    controller.send(:url_for_canvas, url_opts)
   end
 
-  # Generate a link that stays within the Facebook canvas
+  # Generate a link that points within the Facebook canvas
   def link_to_canvas(text, url_opts={}, html_opts={})
-    url = url_for_canvas(url_opts)
-    content_tag("a", text, html_opts.merge(:rev=>"canvas", :href=>url, :target=>"_top"), false)
+    content_tag("a", text, html_opts.merge(:rev=>"canvas", :href=>url_for_canvas(url_opts), :target=>"_top"), false)
   end
   
   # Insert properly-formed FB.init() call with fb-root doc element
