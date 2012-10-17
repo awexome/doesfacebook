@@ -42,20 +42,28 @@ module DoesFacebookHelper
     image_tag("//graph.facebook.com/#{facebook_id}/picture?type=#{type}", opts)
   end
   
-  # Insert properly-formed FB.init() call with fb-root doc element
-  def fb_init(opts={})
-    opts = {:status=>true, :cookie=>true, :xfbml=>true}.merge(opts)
-    opts.merge!(:appId=>app_id)
-    raw("""<div id=\"fb-root\"></div>
-    <script src=\"http://connect.facebook.net/en_US/all.js\"></script>
+
+  # Insert properly-formed FB.init() call with fb-root doc element. Yields a block which
+  # can be used to inject further FB initialization JavaScript within fbAsyncInit
+  def fb_init(init_opts={}, &block)
+    init_opts = {appId: app_id, channelUrl: "/channel.html", status: true, cookie: true, xfbml: false}.merge(init_opts)
+    injection = """<!-- Facebook JS SDK -->
+    <div id=\"fb-root\"></div>
     <script>
-      FB.init(#{opts.to_json});
       window.fbAsyncInit = function() {
-        FB.XFBML.parse();
-        FB.Canvas.setAutoGrow();
-      }
-    </script>
-    """)
+        FB.init(#{init_opts.to_json});"""
+    injection += capture(&block) if block_given?
+    injection += """
+      };
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = \"//connect.facebook.net/en_US/all.js\";
+         ref.parentNode.insertBefore(js, ref);
+       }(document));
+    </script>"""
+    return injection.html_safe
   end
   
   

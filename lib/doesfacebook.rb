@@ -22,6 +22,10 @@ module DoesFacebook
       app.middleware.use DoesFacebook::Middleware
     end
 
+    initializer "doesfacebook.static_assets" do |app|
+      app.middleware.use ::ActionDispatch::Static, "#{root}/public"
+    end
+
     paths["app/helpers"] << "lib/helpers"
   end
   
