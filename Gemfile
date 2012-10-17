@@ -15,4 +15,7 @@ group :development do
   gem "jeweler", "~> 1.8.4"
   gem "rdoc", "~> 3.12"
   gem "rspec", ">= 2.11.0"
+  # gem "rspec-rails", ">= 2.11.0"
+  # gem "capybara", "~> 1.1.2"
+  # gem "combustion", "~> 0.3.2"
 end
