@@ -10,8 +10,8 @@ to your +Gemfile+:
 
   gem "doesfacebook"
 
-DoesFacebook is built against Rails versions 3.1 and higher. It depends on +gem "rails", ">= 3.1.0"+
-for usage. Development requirements include bundler, jeweler, and rspec.
+DoesFacebook is built against Rails versions 3.1 and higher, which it requires at runtime. In
+development, the additional gem requirements include bundler, jeweler, and rspec.
 
 == Configure
 
@@ -30,12 +30,12 @@ sample app definition and a commented section containing optional selector behav
 === Facebook Applications
 
 DoesFacebook supports any number of Facebook applications within a single Rails application.
-Facebook applications are created at defined within the 
+Facebook applications are created and defined within the 
 {Facebook Developers Dashboard}[https://developers.facebook.com/].
 
 You can customize the configuration for any number of supported applications in the initializer
 file. A typical case is to have a Facebook application for each environment in which your Rails
-application will run (development, staging, production, etc.), but you are not tried to this
+application will run (development, staging, production, etc.), but you are not tied to this
 convention and can define any number of Facebook applications your Rails application will support.
 
 A sample Facebook application definition:
@@ -53,7 +53,7 @@ The example above shows a declaration with the required keys defined. App ID, Se
 and the callback URLs are used to handle incoming requests from Facebook, parse and validate
 POST parameters from Facebook, and more.
 
-Add additional applications by adding subsequent +config.add_application()+ calls to your
+Add additional applications by adding subsequent +config.add_application+ calls to your
 initializer.
 
 You can define, for your reference and remote configuration purposes, any configuration key for
@@ -65,9 +65,9 @@ your application specified in the documentation on developers.facebook.com.
 By default, the +canvas_url+ and +secure_canvas_url+ keys of your configured applications will be
 compared against incoming requests to match each request with a single Facebook application.
 
-For example, if a request comes from the Facebook canvas to +http://dev1.com/abe+ and strikes your
+For example, if a request comes from the Facebook canvas to "http://dev1.com/abe" and strikes your
 application, DoesFacebook will match this request with the Facebook application containing a +canvas_url+
-that is a part of the request URL +http://dev1.com/abe+. If the request comes in over SSL/HTTPS,
+that is a part of the request URL "http://dev1.com/abe". If the request comes in over SSL/HTTPS,
 DoesFacebook will compare against the +secure_canvas_url+ key of your applications.
 
 As a +Proc+, this default selection method is defined like so: 
@@ -134,20 +134,24 @@ and other Facebook features:
 
 You also receive a few beneficial link methods:
 
-* +url_for_canvas()+ - Like the standard +url_for+, but ensures the endpoint is in the Facebook canvas
-* +link_to_canvas()+ - Use as you would the regular +link_to+ helper; generates links to the canvas and properly targets the link to "_top" frame to keep app within canvas and not break into your iframe
+* +url_for_canvas+ - Like the standard +url_for+, but ensures the endpoint is in the Facebook canvas
+* +link_to_canvas+ - Use as you would the regular +link_to+ helper; generates links to the canvas and properly targets the link to "_top" frame to keep app within canvas and not break into your iframe
 
 Quick Facebook helpers for representing users and bootstrapping your application's JS SDK implementation
 are also provided:
 
-* +profile_pic(fb_id, opts={})+ - Builds out an image tag containing the profile picture of the specified user. Pass +type+ and basic +image_tag+ options along in the +opts+ hash to customize.
-* +fb_init(opts={}, &block)+ - Bootstrap an FB JS SDK implementation with this call, which will automatically inject the JS SDK with proper values for +appId+ as well as the proper browser-compatibility +channelUrl+ file.
+* +profile_pic+ - Builds out an image tag containing the profile picture of the specified user. Pass +type+ and basic +image_tag+ options along in the +opts+ hash to customize.
+* +fb_init+ - Bootstrap an FB JS SDK implementation with this call, which will automatically inject the JS SDK with proper values for +appId+ as well as the proper browser-compatibility +channelUrl+ file.
 
-See how this sample +fb_init+ invocation:
+Display a profile photo of a user with Facebook ID 1234567890 in a view with some view customizations:
+
+  <%= profile_pic 1234567890, :type=>"small", :style=>"border: 2px solid blue;" %>
+
+Complete a basic invocation of +fb_init+ from your layout:
 
   <%= fb_init() %>
 
-Generates this properly-formed JS SDK boot in your layout:
+And you will, in effect, be generating this properly-formed JS SDK boot in your layout:
 
   <!-- Facebook JS SDK -->
   <div id="fb-root"></div>
