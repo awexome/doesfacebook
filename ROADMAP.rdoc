@@ -1,28 +1,22 @@
 = DoesFacebook Road Map
 
-Moving forward, the existing trunk of DoesFacebook (v0.*) will be closed to
-make way for cleaner implementation and new features in the upcomding v1.*
-branch. Within code, these tracks are represented by the
+The previous trunk of DoesFacebook (v0.*) has been closed to make way for
+cleaner implementation and new features in the upcoming v1.* branch. Within
+code, these tracks are represented by the
 {"v0" (original) branch}[https://github.com/awexome/doesfacebook/tree/v0]
 and the 
 {"v1" (new) branch}[https://github.com/awexome/doesfacebook/tree/v1].
 
+At this time, v1 is merging into master.
+
 This document reflects the planned changes for versions going forward.
 
-== v0.6.0
-
-Expected release by November 2012. Fixes issues and extends functionality of
-the existing v0.5.* track. Introduces deprecations, but does not break
-functionality.
-
-Planned features:
-
-* Add new and clean up existing helper methods
-* Add proper deprecation messaging for deprecated configurations and methods
 
 == v1.0.0
 
-Expected release by December 2012. Changes API and methods of configuration
+The v1 branch is the current branch of development.
+
+Expected release by November 2012. Changes API and methods of configuration
 while adding deeper integrations, new features, and currently unsupported
 Facebook features. Will break some aspects of code written against prior
 versions of the library.
@@ -37,6 +31,19 @@ Planned features:
 * Change standards and optimizations for helpers, filters
 * Provide user, page, and referrer details to apps in filters
 * Add deeper integration options with Graph API via DoesOpenGraph
+
+
+== v0.6.0
+
+Maintained in the v0 branch, this is the prior path of development.
+
+Released October 11, 2012. Fixes issues and extends functionality of
+the existing v0.5.* track. Introduces deprecations, but does not break
+functionality.
+
+Implemented features:
+
+* Add proper deprecation messaging for deprecated configurations and methods
 
 
 == Support
