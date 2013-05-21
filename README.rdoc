@@ -10,7 +10,7 @@ to your +Gemfile+:
 
   gem "doesfacebook"
 
-DoesFacebook is built against Rails versions 3.1 and higher, which it requires at runtime. In
+DoesFacebook is built against Rails versions 3.2 and higher, which it requires at runtime. In
 development, the additional gem requirements include bundler, jeweler, and rspec.
 
 == Configure
@@ -24,13 +24,13 @@ included generator:
 
   rails generate does_facebook:config
 
-This generates a file +doesfacebook.rb+ in your +config/initializers+ directory containing a 
+This generates a file +doesfacebook.rb+ in your +config/initializers+ directory containing a
 sample app definition and a commented section containing optional selector behavior.
 
 === Facebook Applications
 
 DoesFacebook supports any number of Facebook applications within a single Rails application.
-Facebook applications are created and defined within the 
+Facebook applications are created and defined within the
 {Facebook Developers Dashboard}[https://developers.facebook.com/].
 
 You can customize the configuration for any number of supported applications in the initializer
@@ -70,7 +70,7 @@ application, DoesFacebook will match this request with the Facebook application 
 that is a part of the request URL "http://dev1.com/abe". If the request comes in over SSL/HTTPS,
 DoesFacebook will compare against the +secure_canvas_url+ key of your applications.
 
-As a +Proc+, this default selection method is defined like so: 
+As a +Proc+, this default selection method is defined like so:
 
   app_selector = Proc.new() do |request, apps|
     apps.find do |a|
@@ -180,7 +180,7 @@ learn the nitty-gritty details of JS SDK initialization at https://developers.fa
 
 == Copyright
 
-Copyright 2011-12 Awexome Labs, LLC 
+Copyright 2011-12 Awexome Labs, LLC
 http://awexomelabs.com
 http://facebook.com/AwexomeLabs
 http://twitter.com/awexomelabs
